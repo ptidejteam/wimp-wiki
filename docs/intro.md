@@ -3,33 +3,31 @@ sidebar_position: 1
 ---
 
 # Introduction
+The wimp project for "where is my professor" is an iot project/proof of concept. The objective is to gather a set of iot devices giving various information on the building,location etc... whose goal is that after processing we can tell in an automated way if a teacher is available or not. 
 
-Let's discover **Docusaurus in less than 5 minutes**.
 
-## Getting Started
+This proof of concept shows the possibility of taking the smart-home concept to a higher scale with more devices, role systems, profiles etc... 
 
-Get started by **creating a new site**.
+## architecture
+The project is divided into 2 main parts at the architecture level. One is the Student part and the other one is the Teacher-admin part. 
+- The student part consists for the moment of a web weaner accessible by the students in order to have access to a graphic interface summarizing the state of availability of the teachers. 
+- The teacher-admin part that we will apply backend which is the heart of the project see for more details .
 
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
 
-## Generate a new site
+## technologie 
 
-Generate a new Docusaurus site using the **classic template**:
+**Node-Red**
+>Javascript technology allowing to manage iot devices thanks to a system of neuds. This system of neuds allows to make treatment more simple than with javascript code directly. This allows neofit in programming (like many teachers) to use WIMP. Moreover it is very easy to create its own neuds in pure javascript which is very useful for advanced users.
 
-```shell
-npx @docusaurus/init@latest init my-website classic
-```
+**Express**
+>Express.js is a framework for building web applications based on Node.js. It is in fact the standard framework for server development in Node.js. Since node-red is also a .js technology it integrates well with Express. Indeed Express can embed a node-red server to use node-red as an api
 
-## Start your site
+**Other**
+>other technology less important because easily replaceable by others have been used as Passport.js for security or simple-db-json.js for database management. Their choice will be mainly due to their simplicity, and the fact that they are very often used technologies.
 
-Run the development server:
+## Main collaborators 
 
-```shell
-cd my-website
-
-npx docusaurus start
-```
-
-Your site starts at `http://localhost:3000`.
-
-Open `docs/intro.md` and edit some lines: the site **reloads automatically** and display your changes.
+* Yann-Gaël Guéhéneuc
+* Timothé Verstraete
+* Eloi Menaud
+* ...
