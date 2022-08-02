@@ -8,7 +8,7 @@ const FeatureList = [
     Svg: require('../../static/img/undraw_location_tracking.svg').default,
     description: (
       <>
-        The wimp system allows you to track your favorite teachers' availability in real time thanks to the power of IoT.
+        The WIMP system allows you to track your favorite teachers' availability in real time thanks to the power of IoT.
       </>
     ),
   },
@@ -26,7 +26,7 @@ const FeatureList = [
     Svg: require('../../static/img/undraw_admin.svg').default,
     description: (
       <>
-        TODO
+        The WIMP system is easy and quick to deploy. It is a turnkey solution that can be used by any department of Concordia University.
       </>
     ),
   },

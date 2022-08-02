@@ -41,9 +41,9 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: 'wimp',
+        title: 'WIMP',
         logo: {
-          alt: 'wimp logo',
+          alt: 'WIMP logo',
           src: 'img/logo.svg',
         },
         items: [
@@ -51,12 +51,22 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
             type: 'doc',
             docId: 'intro',
             position: 'left',
-            label: 'Tutorial',
+            label: 'Documentation',
           },
           {to: '/blog', label: 'Blog', position: 'left'},
           {
-            href: 'https://github.com/facebook/docusaurus',
-            label: 'GitHub',
+            href: 'https://github.com/ptidejteam/wimp_webserver',
+            label: 'Student Part Github',
+            position: 'right',
+          },
+          {
+            href: 'https://github.com/ptidejteam/industry',
+            label: 'Teacher Part Github',
+            position: 'right',
+          },
+          {
+            href: 'https://github.com/ptidejteam/wimp-wiki/',
+            label: 'Wiki GitHub',
             position: 'right',
           },
         ],
@@ -73,19 +83,23 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
               },
               {
                 label: 'Architecture',
-                to: '/docs/architecture',
-              },
-              {
-                label: 'User Guide',
-                to: '/docs/user',
+                to: '/docs/architecture/architecture',
               },
               {
                 label: 'Teacher Guide',
-                to: '/docs/teacher',
+                to: '/docs/teacher/teacher',
+              },
+              {
+                label: 'Student Guide',
+                to: '/docs/student/student',
               },
               {
                 label: 'Admin Guide',
-                to: '/docs/admin',
+                to: '/docs/admin/admin',
+              },
+              {
+                label: 'Deployment',
+                to: '/docs/deploy_wimp',
               },
             ],
           },
@@ -114,13 +128,13 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
                 to: '/blog',
               },
               {
-                label: 'GitHub',
+                label: 'Ptidej - GitHub',
                 href: 'https://github.com/ptidejteam',
               },
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} wimp, Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} WIMP, Built with Docusaurus.`,
       },
       prism: {
         theme: lightCodeTheme,
