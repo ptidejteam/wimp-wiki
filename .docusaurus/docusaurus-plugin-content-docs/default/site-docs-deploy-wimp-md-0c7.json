@@ -7,7 +7,7 @@
   "source": "@site/docs/deploy_wimp.md",
   "sourceDirName": ".",
   "slug": "/deploy_wimp",
-  "permalink": "/docs/deploy_wimp",
+  "permalink": "/wimp-wiki/docs/deploy_wimp",
   "editUrl": "https://github.com/facebook/docusaurus/edit/main/website/docs/deploy_wimp.md",
   "tags": [],
   "version": "current",
@@ -18,6 +18,6 @@
   "sidebar": "tutorialSidebar",
   "previous": {
     "title": "Admin Guide",
-    "permalink": "/docs/admin/admin"
+    "permalink": "/wimp-wiki/docs/admin/admin"
   }
 }

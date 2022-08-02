@@ -7,7 +7,7 @@
   "source": "@site/docs/frontend/frontend.md",
   "sourceDirName": "frontend",
   "slug": "/frontend/frontend",
-  "permalink": "/docs/frontend/frontend",
+  "permalink": "/wimp-wiki/docs/frontend/frontend",
   "editUrl": "https://github.com/facebook/docusaurus/edit/main/website/docs/frontend/frontend.md",
   "tags": [],
   "version": "current",
@@ -15,10 +15,10 @@
   "sidebar": "tutorialSidebar",
   "previous": {
     "title": "Backend",
-    "permalink": "/docs/architecture/architecture"
+    "permalink": "/wimp-wiki/docs/architecture/architecture"
   },
   "next": {
     "title": "Backend",
-    "permalink": "/docs/backend/backend"
+    "permalink": "/wimp-wiki/docs/backend/backend"
   }
 }

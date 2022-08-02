@@ -6,12 +6,12 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 (module.exports = {
   title: 'WIMP Wiki',
   tagline: 'Where Is My Professor?',
-  url: 'http://wimp.com',
-  baseUrl: '/',
+  url: 'https://ptidejteam.github.io',
+  baseUrl: '/wimp-wiki/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/logo.svg',
-  organizationName: 'Ptidejteam', // Usually your GitHub org/user name.
+  organizationName: 'ptidejteam', // Usually your GitHub org/user name.
   projectName: 'wimp-wiki', // Usually your repo name.
 
   presets: [

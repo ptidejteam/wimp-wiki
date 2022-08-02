@@ -7,7 +7,7 @@
   "source": "@site/docs/teacher/teacher.md",
   "sourceDirName": "teacher",
   "slug": "/teacher/teacher",
-  "permalink": "/docs/teacher/teacher",
+  "permalink": "/wimp-wiki/docs/teacher/teacher",
   "editUrl": "https://github.com/facebook/docusaurus/edit/main/website/docs/teacher/teacher.md",
   "tags": [],
   "version": "current",
@@ -15,10 +15,10 @@
   "sidebar": "tutorialSidebar",
   "previous": {
     "title": "Backend",
-    "permalink": "/docs/backend/backend"
+    "permalink": "/wimp-wiki/docs/backend/backend"
   },
   "next": {
     "title": "Student Guide",
-    "permalink": "/docs/student/student"
+    "permalink": "/wimp-wiki/docs/student/student"
   }
 }

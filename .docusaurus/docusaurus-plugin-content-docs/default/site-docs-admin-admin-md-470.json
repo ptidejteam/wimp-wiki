@@ -7,7 +7,7 @@
   "source": "@site/docs/admin/admin.md",
   "sourceDirName": "admin",
   "slug": "/admin/admin",
-  "permalink": "/docs/admin/admin",
+  "permalink": "/wimp-wiki/docs/admin/admin",
   "editUrl": "https://github.com/facebook/docusaurus/edit/main/website/docs/admin/admin.md",
   "tags": [],
   "version": "current",
@@ -15,10 +15,10 @@
   "sidebar": "tutorialSidebar",
   "previous": {
     "title": "Student Guide",
-    "permalink": "/docs/student/student"
+    "permalink": "/wimp-wiki/docs/student/student"
   },
   "next": {
     "title": "Deploy your WIMP system",
-    "permalink": "/docs/deploy_wimp"
+    "permalink": "/wimp-wiki/docs/deploy_wimp"
   }
 }

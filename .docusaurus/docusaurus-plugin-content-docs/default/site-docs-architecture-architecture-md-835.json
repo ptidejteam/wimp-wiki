@@ -7,7 +7,7 @@
   "source": "@site/docs/architecture/architecture.md",
   "sourceDirName": "architecture",
   "slug": "/architecture/architecture",
-  "permalink": "/docs/architecture/architecture",
+  "permalink": "/wimp-wiki/docs/architecture/architecture",
   "editUrl": "https://github.com/facebook/docusaurus/edit/main/website/docs/architecture/architecture.md",
   "tags": [],
   "version": "current",
@@ -15,10 +15,10 @@
   "sidebar": "tutorialSidebar",
   "previous": {
     "title": "Introduction",
-    "permalink": "/docs/intro"
+    "permalink": "/wimp-wiki/docs/intro"
   },
   "next": {
     "title": "Frontend",
-    "permalink": "/docs/frontend/frontend"
+    "permalink": "/wimp-wiki/docs/frontend/frontend"
   }
 }
