@@ -6,6 +6,30 @@ Each time a student wants to access the status of his teachers, the frontend ser
 Express. Express will check this request and then interogate node-red with a GET in order to notify the different states of the professor. Finally Express will transform the raw information received by node-red (as 'int', for example) and return clean information (as 'not available').
 
 
+# node red
+Node-red is embedded in the server express. That is to say that it plays the role of an api. However node-red will be launched as a classical server except that all requests will go through the express server.
+The express server will make requests to /api to acces the node-red server.
+
+```javascript
+var settings = {
+    httpAdminRoot:"/red",
+    httpNodeRoot: "/api",
+    userDir: __dirname + "/../flows",
+    flowFile:'flows.json', 
+    editorTheme: {
+    tours: false,
+    },
+    functionGlobalContext: { }    // enables global context
+};
+
+RED.init(server,settings);
+app.use("/red",checkAuthenticated,RED.httpAdmin); // ipserver:8000/red will return the flow UI of node-red
+
+...
+
+RED.start();
+```
+
 # Recieve request
 
 All the API routes are in the /modules/aiRouter.js
@@ -45,7 +69,7 @@ const db_staff = new JSONdb('./database/staff.json');
 ```
 
 Finally, the program will fill in the relevant fields through a series of processes and then store the profile in a list that will be sent as a response.
-
+The most important part is when the server calls node-red to get the teacher's availability status. To do this the server makes an http request to node-red (which is actually implemented as an internet API to the server).
 ```js
 //try{
     ...
@@ -64,12 +88,13 @@ Finally, the program will fill in the relevant fields through a series of proces
         } else {
             state.firstName = person.firstName;
         }
-
+        // check if the professor is on mode "tracking off"
         if (person.tracking === "OFF") {
             state.statusColor = "grey";
             state.statusMsg = "Disconnected";
         } else {
-            // Find if the current state is defined
+
+            // Find if the current state is defined <----
             const db_data = new JSONdb(path.resolve('./database/db.json'));
             let currentState = "undefined";
             if (db_data.has(e)){
@@ -77,7 +102,7 @@ Finally, the program will fill in the relevant fields through a series of proces
             }
             state.currentState = currentState;
             
-            // Find the color & msg of the state
+            // Find the color & msg of the state 
             if(currentState !== "undefined"){
                 state.visibility = person.states[currentState].visibility;
                 state.statusColor = person.states[currentState].color;
@@ -107,3 +132,4 @@ catch (e){
 }
 res.send(states).status(200);
 ```
+
