@@ -71,3 +71,12 @@ Each teacher can have as many states as they want. He will be able to assign to 
 After starting the calculation of the states, the flow gathers them to put them in a message to be sent as a reply. **Since the message is sent once the calculation of the state by each subflow, a 'TimeOut' node should be implemnted to avoid that a subflow of a teacher too slow slows down all the other flows**.
 
 **output** A .json that coressponding to all the states of all the teachers of the form:
+
+```json
+{
+    "professor1" : 1,
+    "professeur2" : 22,
+    "professeur3" : 0,
+    ...
+}
+```
