@@ -103,3 +103,23 @@ It should also be possible to completely deactivate everything in order not to b
 ```
 On the site :
 ![alt text](./img/tracker.png)
+
+## login/security 
+
+A login/password system has been set up to secure the data.
+
+This connection is managed with passport.js (same system as in fontend)
+
+the database storing the login/password in `/database/db_acc.json`
+and looks like :
+```json
+{
+    "id professeur 1 (username)" : "5868",
+    "id professeur 2" : "5868",
+    ...
+}
+```
+
+## ?
+** Why no registration pages? **
+because the professor are theorically already in the concordia database.
