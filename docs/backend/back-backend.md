@@ -6,7 +6,7 @@ Each time a student wants to access the status of his teachers, the frontend ser
 Express. Express will check this request and then interogate node-red with a GET in order to notify the different states of the professor. Finally Express will transform the raw information received by node-red (as 'int', for example) and return clean information (as 'not available').
 
 
-# node red
+## node red
 Node-red is embedded in the server express. That is to say that it plays the role of an api. However node-red will be launched as a classical server except that all requests will go through the express server.
 The express server will make requests to /api to acces the node-red server.
 
@@ -30,7 +30,7 @@ app.use("/red",checkAuthenticated,RED.httpAdmin); // ipserver:8000/red will retu
 RED.start();
 ```
 
-# Recieve request
+## Recieve request
 
 All the API routes are in the /modules/aiRouter.js
 
