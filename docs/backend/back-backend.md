@@ -1,14 +1,18 @@
-# back-backend
+---
+sidebar_position: 3
+---
 
-This part his the node-red <-> REST API 
+# Back-Backend
+
+This part his the Node-RED <-> REST API 
 
 Each time a student wants to access the status of his teachers, the frontend server sends a request to the express api.
-Express. Express will check this request and then interogate node-red with a GET in order to notify the different states of the professor. Finally Express will transform the raw information received by node-red (as 'int', for example) and return clean information (as 'not available').
+Express. Express will check this request and then interogate Node-RED with a GET in order to notify the different states of the professor. Finally Express will transform the raw information received by Node-RED (as 'int', for example) and return clean information (as 'not available').
 
 
-## node red
-Node-red is embedded in the server express. That is to say that it plays the role of an api. However node-red will be launched as a classical server except that all requests will go through the express server.
-The express server will make requests to /api to acces the node-red server.
+## Node-Red
+Node-red is embedded in the server express. That is to say that it plays the role of an API. However Node-RED will be launched as a classical server except that all requests will go through the express server.
+The express server will make requests to /api to acces the Node-RED server.
 
 ```javascript
 var settings = {
@@ -23,21 +27,23 @@ var settings = {
 };
 
 RED.init(server,settings);
-app.use("/red",checkAuthenticated,RED.httpAdmin); // ipserver:8000/red will return the flow UI of node-red
+app.use("/red",checkAuthenticated,RED.httpAdmin); // ipserver:8000/red will return the flow UI of Node-RED
 
 ...
 
 RED.start();
 ```
 
-## Recieve request
+To learn more about Node-RED, please see this [page](node-red.md).
+
+## Receive request
 
 All the API routes are in the /modules/aiRouter.js
 
 The front end webserver call a GET on /states to get the states
 and a first ip verification is done to make sure that the request comes from an authorized web server.
 ```js
-    apiRouter.get('/states', ipfilter(authorizedIPs, ipfilterConfig)...
+apiRouter.get('/states', ipfilter(authorizedIPs, ipfilterConfig)...
 ```
 The program will browse the entire database where the teachers are stored.
 It will create a profile for each teacher containing the information that will be sent as a response. 
@@ -69,9 +75,9 @@ const db_staff = new JSONdb('./database/staff.json');
 ```
 
 Finally, the program will fill in the relevant fields through a series of processes and then store the profile in a list that will be sent as a response.
-The most important part is when the server calls node-red to get the teacher's availability status. To do this the server makes an http request to node-red (which is actually implemented as an internet API to the server).
+The most important part is when the server calls Node-RED to get the teacher's availability status. To do this the server makes an http request to Node-RED (which is actually implemented as an internet API to the server).
 ```js
-//try{
+try {
     ...
         // Find if the person is in the database
         if (fs.existsSync(path.resolve('./pp/' + person.pp))) {
@@ -127,7 +133,7 @@ The most important part is when the server calls node-red to get the teacher's a
         states.push(state);
     })
 }
-catch (e){
+catch (e) {
     console.log(e);   
 }
 res.send(states).status(200);

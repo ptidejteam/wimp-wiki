@@ -55,13 +55,13 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
           },
           {to: '/blog', label: 'Blog', position: 'left'},
           {
-            href: 'https://github.com/ptidejteam/wimp_webserver',
-            label: 'Student Part Github',
+            href: 'https://github.com/ptidejteam/wimp-frontend',
+            label: 'Frontend Github',
             position: 'right',
           },
           {
-            href: 'https://github.com/ptidejteam/industry',
-            label: 'Teacher Part Github',
+            href: 'https://github.com/ptidejteam/wimp-backend',
+            label: 'Backend Github',
             position: 'right',
           },
           {
@@ -83,23 +83,23 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
               },
               {
                 label: 'Architecture',
-                to: '/docs/architecture/architecture',
+                to: '/docs/architecture',
               },
               {
-                label: 'Teacher Guide',
-                to: '/docs/teacher/teacher',
+                label: 'Frontend',
+                to: '/docs/frontend/frontend',
               },
               {
-                label: 'Student Guide',
-                to: '/docs/student/student',
+                label: 'Backend',
+                to: '/docs/backend/intro',
               },
               {
-                label: 'Admin Guide',
-                to: '/docs/admin/admin',
+                label: 'Deploy',
+                to: '/docs/deploy/deploy',
               },
               {
-                label: 'Deployment',
-                to: '/docs/deploy_wimp',
+                label: 'Contribute',
+                to: '/docs/contribute/contribute_system',
               },
             ],
           },
