@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkexamples_classic=self.webpackChunkexamples_classic||[]).push([[583],{201:a=>{a.exports=JSON.parse('{"allTagsPath":"/wimp-wiki/blog/tags","slug":"/wimp-wiki/blog/tags/facebook","name":"facebook","count":1,"permalink":"/wimp-wiki/blog/tags/facebook"}')}}]);
