@@ -1,21 +1,22 @@
-As seen in backend/back-backend the server transforms data received from node-red into displayable data (color, text).
+# Front-Backend
+As seen in <a href="./back-backend#recieve-request">back-backend#recieve-request</a> the server transforms data received from node-red into displayable data (color, text).
 To do this the server matches the raw data to the sentence and color that the teacher has chosen. 
 
-Example : 
-node-red side -> when my plug is connected I generate the availability status 1
-express side -> for me the state 1 corresponds to "I am available" in green 
+Example : <br/>
+node-red side -> _when my plug is connected I generate the availability status **1**_<br/>
+express side -> _for me the state 1 corresponds to **"I am available"** in **green**_
 
-However, to do this, express must retrieve its own information from a database, so the front-backend graphical interface is necessary to allow teachers to modify their messages, add states, change the color of some messages etc...
+However, to do this, express must retrieve its own information from a database, its why the front-backend (graphical interface) is necessary to allow teachers to modify their messages, add states, change the color of some messages etc...
 
 
 
-## Les besoins: 
+## Needs: 
 
-After discussions we have established 3 needs:
+After discussion we have established 3 needs:
 
-- to be able to match a specific message to a certain state 
-- to be able to manage the visibility of the messages according to the students
-- to be able to deactivate its presence on the site (to be in an "undifined" state no matter what information the devices have)
+- to be able to match a specific state (from node-red) to a certain message 
+- to be able to manage the visibility of the messages according to the students level/role
+- to be able to disabled its presence on the site (to be in an "Disconnected" message no matter what information the devices sent)
 
 ### to be able to match a specific message to a certain state
 Chaque etat brute renvoyé par node-red doit avoir un corespondance propre constitué d'un message et d'une coleur d'affichage
@@ -74,7 +75,7 @@ On the site :
 
 
 ### to be able to deactivate its presence on the site
-It should also be possible to completely deactivate everything in order not to be "traced" anymore. For this purpose a field `"tracking":` has been set up 
+It should also be possible to completely deactivate everything in order to be "untracked". For this purpose a field `"tracking":` has been set up 
 
 ```json
 // database/staff.json
@@ -108,7 +109,7 @@ On the site :
 
 A login/password system has been set up to secure the data.
 
-This connection is managed with passport.js (same system as in fontend)
+This connection using passport.js and the POST request done ine /static/login/login.js are almost the same that in <a href="../frontend/frontend#security">frontend#security</a> 
 
 the database storing the login/password in `/database/db_acc.json`
 and looks like :
