@@ -1,6 +1,10 @@
+<<<<<<< HEAD:docs/backend/back-backend.md
 ---
 sidebar_position: 3
 ---
+=======
+# Back-Backend
+>>>>>>> 0d292bd5e82719d3e9b0d9bd8505c3bf2069b547:docs/backend/3-back-backend.md
 
 # Back-Backend
 

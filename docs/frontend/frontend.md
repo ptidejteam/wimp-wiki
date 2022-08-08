@@ -13,9 +13,13 @@ See ```app.get('/home'...``` in /server.js.
 
 
 ## Login 
-A connection system has been set up to allow data security and to authenticate the students (especially to know the level of study called *role*)
-Students who go to the site without a logged in session are presented with a home page. `They fill in their username and password.
-![Login page](img/login.png)
+A connection system has been set up to allow data security and to authenticate the students (especially to know the level of study called *role*). 
+there are 3 different roles :
+- student
+- researcher
+- colleague
+Students who go to the site without a logged session are redirected to the login page. They fill their username and password.
+![Login Page](img/login.png)
 
 This page is under the /login route.
 With [GET]/login that sends the page back and [POST]/login that receives the information to establish the connection or not.
