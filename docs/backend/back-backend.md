@@ -4,47 +4,109 @@ sidebar_position: 3
 
 # Back-Backend
 
-This part his the Node-RED <-> REST API 
+The back-backend which contains the Node-Red part and the API accesible through the backend or the front of the system.
 
 Each time a student wants to access the status of his teachers, the frontend server sends a request to the express api.
 Express. Express will check this request and then interogate Node-RED with a GET in order to notify the different states of the professor. Finally Express will transform the raw information received by Node-RED (as 'int', for example) and return clean information (as 'not available').
 
 
-## Node-Red
-Node-red is embedded in the server express. That is to say that it plays the role of an API. However Node-RED will be launched as a classical server except that all requests will go through the express server.
-The express server will make requests to /api to acces the Node-RED server.
+## Node-RED
+Node-RED is embedded in the Express server. That is to say that it plays the role of an API. However Node-RED will be launched as a classical server except that all requests will go through the Express server.
+The Express server will make requests to `/node` to acces the Node-RED server.
 
 ```javascript
+// Node-RED config
 var settings = {
-    httpAdminRoot:"/red",
-    httpNodeRoot: "/api",
-    userDir: __dirname + "/../flows",
-    flowFile:'flows.json', 
+    httpAdminRoot:"/red", // base url to access the Node-RED web interface
+    httpNodeRoot: "/node", // base url to access endpoints in the flows
+    userDir: path.resolve("../flows/"),
+    flowFile:'flows.json',
     editorTheme: {
-    tours: false,
+        tours: false, // To disable the welcome tour
     },
     functionGlobalContext: { }    // enables global context
 };
 
-RED.init(server,settings);
-app.use("/red",checkAuthenticated,RED.httpAdmin); // ipserver:8000/red will return the flow UI of Node-RED
-
+RED.init(server, settings);
+app.use(settings.httpNodeRoot, nodeRedAccess, RED.httpNode);
+app.use(settings.httpAdminRoot, checkAuthenticated, nodeRedAuthentication, RED.httpAdmin);
 ...
 
 RED.start();
 ```
 
+This configuration allows to access the Node-RED web interface through the `/red` and access the Node-RED API through the `/node`.
+
+
 To learn more about Node-RED, please see this [page](node-red.md).
+
+### Security of the Node-RED web interface
+
+In order to secure the access to the Node-RED web interface, we decided to use a succession of two middlewares. The first middleware `checkAuthenticated` allows to check if the user that wants to access the interface is authenticated and have a valid session on the server side. The second middleware `nodeRedAuthentication` while update the request with the "credentials" to access to the web interface as an anonymous user.
+
+```js 
+nodeRedAuthentication = (req, res, next) => {
+    if (req.isAuthenticated()) {
+        req.user = {
+            "anonymous":true,
+            "permissions": "*"
+        }
+    }
+    return next();
+}
+```
+
+### Security of the Node-RED API
+
+In order to secure the access to the Node-RED API, we decided to develop a custom middleware. Indeed, we needed a middleware that can adapt depending on the endpoint that is requested because we need to distinguish two types of request to the Node-RED API:
+- The requests that come from the backend Express server himself
+- The requests that come from external IoT devices which want to send data
+
+Here is the code of the middleware that we developed:
+
+```js
+nodeRedAccess = (req, res, next) => {
+    const endpoints = config.EXTERNAL_DEVICES_ROUTES.split(',');
+    console.log("Node-RED Security check for " + req.originalUrl + "...");
+
+    if (endpoints.includes(req.originalUrl)) {
+        console.log('\x1b[32m%s\x1b[0m', "Node-RED Security Exception Accepted for " + req.originalUrl);
+        return next();
+    }
+    
+    const backendRestrictedAccess = config.BACKEND_RESTRICTED_ACCESS.split(',');
+    if (backendRestrictedAccess.includes(req.originalUrl)) {
+        try {
+            if (bcrypt.compareSync(req.body.password, config.NODE_RED_SECRET_ENC)) {
+                console.log('\x1b[32m%s\x1b[0m', "Backend restricted access for " + req.originalUrl);
+                req.body = {};
+                return next();
+            };
+        } catch (e) {
+            console.log(e);
+        }
+    }
+    
+    console.log('\x1b[31m%s\x1b[0m', "Node-RED Security Exception Rejected for " + req.originalUrl);
+    res.redirect("/login");
+}
+```
+Thanks to this custom middleware, we can create security exceptions for the external IoT devices that want to send their data while authorizating only the requests that come from the backend himself. All the others request are rejected and redirected to the login page. 
+
+:::note
+For the requests that come from the backend himself and that have a target which is Node-RED API endpoint, they must be of POST type and have a body of this type:
+`{
+    "password": "**Node-RED API Secret**"
+}` 
+:::
+
 
 ## Receive request
 
-All the API routes are in the /modules/aiRouter.js
+All the API routes are in the `/modules/apiRouter.js`
 
-The front end webserver call a GET on /states to get the states
-and a first ip verification is done to make sure that the request comes from an authorized web server.
-```js
-apiRouter.get('/states', ipfilter(authorizedIPs, ipfilterConfig)...
-```
+The frontend webserver call a POST on /states to get the states while providing the right password to get an access to the backend API and make sure that the request comes from an authorized web server.
+
 The program will browse the entire database where the teachers are stored.
 It will create a profile for each teacher containing the information that will be sent as a response. 
 ```js

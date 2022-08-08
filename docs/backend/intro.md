@@ -17,6 +17,6 @@ A Node-RED server is used to process the information received from the different
 In terms of software design, the backend part is separated in 2 sub parts :
 
 - The front-backend which manages the Teacher interface via web pages. In this case, the backend corresponds to a classic web server
-- The back-backend which contains the Node-Red part and the API accesible through the bakcend or the front of the system
+- The back-backend which contains the Node-Red part and the API accesible through the backend or the front of the system
 
 The two parts of the backend are linked thanks to the Express.js server.
