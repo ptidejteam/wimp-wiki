@@ -59,13 +59,15 @@ Each teacher's sub-flow must return their status in the form of a .payload messa
 {
     "_msgid": "12345",
     "payload": {
-        "professeurID" : 12,
-        "state" : 1
+        "fianl": {
+            "professeurID" : 12,
+            "state" : 1
+        }
     }
 }
 ```
 
-Each teacher can have as many states as they want. He will be able to assign to this status a corresponding message on his profile page, see this [page](../backend/front-backend.md).
+Each teacher can have as many states as they want. He will be able to assign to this status a corresponding message on his profile page, see this [page](../backend/front-backend.md#be-able-to-match-a-specific-message-to-a-certain-state).
 
 Here is an example of the organisation of a teacher's subflow:
 ![Teacher Subflow Organisation](img/subflow.png)
@@ -77,7 +79,7 @@ And here is an example of the teacher subflow using the template :
 
 **Input**
 
-To trigger the calculation of the states at each /api/state
+The calculation of the states are triggered at each [post]/node/currentstates from the Express server to the Node-Red server
 
 After starting the calculation of the states, the flow gathers them to put them in a message to be sent as a reply. **Since the message is sent once the calculation of the state by each subflow, a 'TimeOut' node should be implemnted to avoid that a subflow of a teacher too slow slows down all the other flows**.
 
