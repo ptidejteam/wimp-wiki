@@ -31,6 +31,27 @@ cd ./wimp-backend/
 ```
 Now you can move on to configuring the service and exposing the backend with Nginx.
 
+## Configure Redis
+
+We use Redis in order to limit the number of requests on the POST login endpoint. This protects the form from brute force attacks. This protection aims to blacklist malicious IPs that try to attack by brute force the login form.
+
+To set up Redis in this context, you need to : 
+
+- Install Redis on the Raspberry Pi or server that host the frontend part of the system by following this [tutorial](https://amalgjose.com/2020/08/11/how-to-install-redis-in-raspberry-pi/).
+
+- Configure a systemctl service for the redis server : 
+```bash
+sudo cp -p ~/wimp-frontend/conf/wimp-redis.service /etc/systemd/system/
+sudo systemctl enable wimp-redis.service
+sudo systemctl start wimp-redis.service
+```
+
+- Check if the Redis server is up :
+```bash
+sudo systemctl status wimp-redis
+redis-cli ping
+```
+
 ## Configure the environment
 
 Now you need to add a file that will contains the environement variables for the Backend part of the system : 
@@ -54,8 +75,10 @@ BACKEND_RESTRICTED_ACCESS=/node/currentStates
 EXTERNAL_DEVICES_ROUTES=**List of the Node-RED endpoints in your flows**
 NODE_RED_SECRET=**Clear password of Node-RED API**
 NODE_RED_SECRET_ENC=**Encrypted password of Node-RED API with Bcrypt**
+REDIS_URL=redis://127.0.0.1:6379/0
 ```
 
 :::note
 The field `EXTERNAL_DEVICES_ROUTES` field must be formatted like `/myroute1,/myroute2,/myroute3`.
 :::
+

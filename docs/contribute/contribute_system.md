@@ -15,6 +15,12 @@ To setup the backend developement environment you need to :
 cd ~/wimp-backend/ExpressNodeRed
 npm install
 ```
+
+- Install Redis :
+```bash
+sudo apt-get install redis-server
+```
+
 - Configure the dotenv environment as followed:
     - Create a `.env` file
     
@@ -32,6 +38,7 @@ npm install
     EXTERNAL_DEVICES_ROUTES=**List of the Node-RED endpoints in your flows**
     NODE_RED_SECRET=**Clear password of Node-RED API**
     NODE_RED_SECRET_ENC=**Encrypted password of Node-RED API with Bcrypt**
+    REDIS_URL=redis://127.0.0.1:6379/0
     ```
 
 :::note
