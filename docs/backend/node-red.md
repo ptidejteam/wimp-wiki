@@ -132,8 +132,6 @@ The next steps must be done when the Teacher's subflow is functioning correctly.
 
     - Connect the output of the new subflow to the input of the node named `Join Teachers Status`.
 
-    - Double click on the node named `Join Teachers Status` and increase the value of the field `After a number of message parts` by 1 (current value + 1).
-
     - Click on `Deploy` in the right hand corner and check that everthing is functioning correctly.
 
 :::note
