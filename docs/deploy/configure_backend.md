@@ -17,6 +17,7 @@ On your first Raspberry Pi (or server), if you have a firewall installed, then t
 - Ensure that the port 8080 is open for ExpressAPI communication.
 - Ensure that the port 1880 is open for Node-RED communication.
 - Ensure that all the ports for the communications between your IoT devices and your Raspberry are open (for example, use a WeMo smart plug implies to open the port 9000).
+/!\ On a Raspberry when the firewall (ufw) is not activated the ports are closed by default. So you have to activate ufw and make sure that port 22 is open before activate it.
 
 ## Pull the sources
 
